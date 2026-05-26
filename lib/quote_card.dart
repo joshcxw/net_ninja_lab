@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'quote.dart';
+import 'package:intl/intl.dart';
 
 class QuoteCard extends StatelessWidget {
 
   final Quote quote;
-  VoidCallback onLike;
+  final VoidCallback onLike;
   QuoteCard({required this.quote, required this.onLike, });
 
   @override
@@ -39,6 +40,17 @@ class QuoteCard extends StatelessWidget {
                     onPressed: onLike,
                   ),
                   Text('${quote.likes ?? 0}'),
+                ],
+              ),
+              Column (
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Wrap (
+                    spacing: 8,
+                    children: [
+                      Text(DateFormat('MMM d, yyyy').format(quote.createdAt)),
+                    ],
+                  ),
                 ],
               )
             ],
