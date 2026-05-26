@@ -2,6 +2,7 @@ class Quote {
 
   String text = "";
   String author = "";
+  int? likes = 0;
 
   //  normal constructor, as we've already seen
 
@@ -20,6 +21,6 @@ class Quote {
   // constructor with named parameters
   // & automatically assigns named arguments to class properties
 
-  Quote({ required this.text, required this.author });
+  Quote({ required this.text, required this.author, this.likes });
 
 }

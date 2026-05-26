@@ -4,7 +4,8 @@ import 'quote.dart';
 class QuoteCard extends StatelessWidget {
 
   final Quote quote;
-  QuoteCard({required this.quote });
+  VoidCallback onLike;
+  QuoteCard({required this.quote, required this.onLike, });
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,16 @@ class QuoteCard extends StatelessWidget {
                   color: Colors.grey[800],
                 ),
               ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.thumb_up),
+                    onPressed: onLike,
+                  ),
+                  Text('${quote.likes ?? 0}'),
+                ],
+              )
             ],
           ),
         )
