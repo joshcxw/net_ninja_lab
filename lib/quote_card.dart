@@ -8,9 +8,16 @@ class QuoteCard extends StatelessWidget {
   final VoidCallback onLike;
   QuoteCard({required this.quote, required this.onLike, });
 
+  Color cardColor(String c) => switch (c.toLowerCase()) {
+    'inspiration' => Colors.blueAccent.shade100,
+    'humor'       => Colors.amber.shade100,
+    _             => Colors.grey.shade100,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: cardColor(quote.category),
         margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -48,6 +55,7 @@ class QuoteCard extends StatelessWidget {
                   Wrap (
                     spacing: 8,
                     children: [
+                      Chip(label: Text(quote.category)),
                       Text(DateFormat('MMM d, yyyy').format(quote.createdAt)),
                     ],
                   ),
